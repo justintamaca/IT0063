@@ -1,0 +1,27 @@
+body {
+    font-family: 'Arial', sans-serif;
+  }
+  
+  header {
+    background-color: #1f1c1c4d;
+    color: #fff;
+    text-align: center;
+    padding: 1em;
+  }
+  
+  section {
+    margin: 20px;
+  }
+  
+  button {
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
+  
