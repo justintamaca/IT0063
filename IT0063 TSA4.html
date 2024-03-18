@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Guide</title>
+    <link rel="stylesheet" href="tsa4.css">
+    <style>
+        .dish-container {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 2;
+        }
+        .dish-details {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border: 1px solid black;
+            display: flex;
+            max-width: 90%;
+            max-height: 90%;
+        }
+        .dish-details img {
+            max-width: 50%;
+            height: auto;
+            margin-right: 20px;
+        }
+        .dish-description {
+            max-width: 50%;
+            overflow-y: auto;
+        }
+        .navbar {
+            z-index: 3; /* Ensure the menu button is clickable */
+            position: relative; /* Ensure the z-index works */
+        }
+        #menuButton {
+            position: relative; /* Ensure the z-index works */
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Menu -->
+    <nav class="navbar">
+        <div class="container">
+            <h1>Wolfgang's Steakhouse Restaurant Guide</h1>
+            <button id="menuButton" onclick="hideDishDetails()">Menu</button>
+        </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <div class="container">
+        <h2>Welcome to Wolfgang's Steakhouse!</h2>
+        <!-- First Dish -->
+        <div class="card" id="porterhouse" onclick="showDishDetails('porterhouse')">
+            <img src="porterhouse.png" alt="Porterhouse Image">
+            <div class="card-body">
+                <h3 class="card-title">Porterhouse Steak</h3>
+                <p class="description">USDA Prime Porterhouse, Dry-Aged in our own aging box.</p>
+            </div>
+        </div>
+        <!-- Second Dish -->
+        <div class="card" id="grilledSalmon" onclick="showDishDetails('grilledSalmon')">
+            <img src="grilled salmon.png" alt="Grilled Salmon Image">
+            <div class="card-body">
+                <h3 class="card-title">Grilled Salmon</h3>
+                <p class="description">Salmon Grill.</p>
+            </div>
+        </div>
+        <!-- Third Dish -->
+        <div class="card" id="filetMignon" onclick="showDishDetails('filetMignon')">
+            <img src="filet mignon.png" alt="Filet Mignon Image">
+            <div class="card-body">
+                <h3 class="card-title">Filet Mignon</h3>
+                <p class="description">USDA Prime, Wet-Aged in our own aging box.</p>
+            </div>
+        </div>
+        <!-- Fourth Dish -->
+        <div class="card" id="sirloin" onclick="showDishDetails('sirloin')">
+            <img src="Sirloin.png" alt="Sirloin Image">
+            <div class="card-body">
+                <h3 class="card-title">Prime NY Sirloin Steak</h3>
+                <p class="description">USDA Prime, Dry-Aged in our own aging box.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dish Details Container -->
+    <div id="dishContainer" class="dish-container">
+        <div class="dish-details">
+            <img id="dishImage" src="" alt="Dish Image">
+            <div class="dish-description">
+                <h3 id="dishTitle"></h3>
+                <p id="dishDescription"></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showDishDetails(dishId) {
+            var dishTitle = document.getElementById('dishTitle');
+            var dishDescription = document.getElementById('dishDescription');
+            var dishImage = document.getElementById('dishImage');
+
+            // Set the title, description, and image of the selected dish
+            if (dishId === 'porterhouse') {
+                dishTitle.textContent = 'Porterhouse';
+                dishDescription.textContent = "Indulge in the succulent flavors of our Porterhouse Steak, a culinary masterpiece that combines the richness of the tenderloin and the robustness of the strip steak. Grilled to perfection, this classic cut boasts a perfect balance of marbling, resulting in a juicy and flavorful dining experience. Savor every bite as the savory aroma tantalizes your senses, accompanied by the satisfying charred exterior and mouthwatering tenderness within. Whether you're a steak aficionado or simply seeking a hearty and satisfying meal, our Porterhouse Steak is sure to delight your palate and leave you craving for more.";
+                dishImage.src = 'porterhouse.png';
+            } else if (dishId === 'grilledSalmon') {
+                dishTitle.textContent = 'Grilled Salmon';
+                dishDescription.textContent = "Embark on a culinary journey with our Grilled Salmon, a masterpiece of oceanic delight. Immerse yourself in the rich aroma of perfectly seasoned fillets, seared to golden perfection on the grill. Each bite offers a symphony of flavors, from the subtle smokiness of the grill to the buttery tenderness of the salmon flesh. Enhanced with a tantalizing herb-infused marinade, this dish is a testament to the harmony of simplicity and sophistication. Whether enjoyed as a wholesome meal or a delightful appetizer, our Grilled Salmon promises to captivate your palate and elevate your dining experience.";
+                dishImage.src = 'grilled salmon.png';
+            } else if (dishId === 'filetMignon') {
+                dishTitle.textContent = 'Filet Mignon';
+                dishDescription.textContent = "Indulge in the exquisite taste of our Filet Mignon, a culinary masterpiece that promises to delight your senses. This tender and succulent cut of beef, carefully selected for its premium quality, is expertly seasoned and grilled to perfection. Each mouthwatering bite offers a rich and buttery texture, complemented by subtle hints of smoky flavor. Served with your choice of savory sides, our Filet Mignon is sure to elevate your dining experience to new heights. Whether you're celebrating a special occasion or simply craving a luxurious treat, savor the unparalleled elegance of our Filet Mignon today.";
+                dishImage.src = 'filet mignon.png';
+            } else if (dishId === 'sirloin') {
+                dishTitle.textContent = 'Sirloin';
+                dishDescription.textContent = "Indulge in the exquisite flavors of our Prime NY Sirloin Steak, meticulously prepared to tantalize your taste buds. Sourced from the finest cuts of prime beef, this succulent steak is renowned for its tenderness and rich, savory taste. Grilled to perfection, each juicy bite offers a symphony of flavors, complemented by a perfectly seared exterior that locks in the steak's natural juices. Whether you prefer it cooked rare, medium, or well-done, our Prime NY Sirloin Steak promises a dining experience that is nothing short of exceptional. Savor the culinary masterpiece that is our Prime NY Sirloin Steak and treat yourself to an unforgettable meal.";
+                dishImage.src = 'Sirloin.png';
+            }
+
+            // Show the dish details container
+            document.getElementById('dishContainer').style.display = 'block';
+        }
+
+        function hideDishDetails() {
+            // Hide the dish details container
+            document.getElementById('dishContainer').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
